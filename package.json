@@ -1,0 +1,22 @@
+{
+  "name": "debounce-throttle",
+  "version": "1.0.0",
+  "description": "Interactive demo comparing Normal, Debounce, and Throttle search behaviour in vanilla JavaScript.",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server . -p 3000 -o",
+    "dev": "http-server . -p 3000 -o"
+  },
+  "keywords": [
+    "debounce",
+    "throttle",
+    "javascript",
+    "performance",
+    "demo"
+  ],
+  "author": "Aslam554",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
