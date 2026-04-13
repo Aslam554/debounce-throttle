@@ -1,6 +1,10 @@
 # ⚡ Debounce & Throttle Demo
 
-An interactive vanilla JavaScript demo that visually compares **Normal**, **Debounce**, and **Throttle** input handling — perfect for understanding these core performance optimization concepts.
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+
+> An interactive vanilla JavaScript demo that visually compares **Normal**, **Debounce**, and **Throttle** input handling — a must-know for every JavaScript developer.
 
 ---
 
@@ -8,33 +12,36 @@ An interactive vanilla JavaScript demo that visually compares **Normal**, **Debo
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) (v14 or higher)
-- npm (comes with Node.js)
 
 ### Installation & Run
 
 ```bash
 # 1. Clone the repository
 git clone https://github.com/Aslam554/debounce-throttle.git
+
+# 2. Move into the project
 cd debounce-throttle
 
-# 2. Install dependencies
+# 3. Install dependencies
 npm install
 
-# 3. Start the dev server
+# 4. Start the dev server
 npm start
 ```
 
-The app will automatically open at **http://localhost:3000** in your browser.
+> Opens automatically at **http://localhost:3000** 🎉
 
 ---
 
-## 📖 What's Inside
+## 🎮 How It Works
 
-| Mode | Behaviour |
-|------|-----------|
-| **Normal** | Fires an API call on **every** keystroke |
-| **Debounce** | Waits **500ms** after you stop typing, then fires once |
-| **Throttle** | Fires at most **once every 500ms** while you type |
+Type in the search box and switch between the three modes to see how each one behaves:
+
+| Mode | Behaviour | Best Used For |
+|------|-----------|--------------|
+| **Normal** | Fires on **every** keystroke | — |
+| **Debounce** | Waits **500ms** after you stop typing | Search inputs, form validation |
+| **Throttle** | Fires at most **once every 500ms** | Scroll events, mouse move |
 
 ---
 
@@ -47,10 +54,10 @@ The app will automatically open at **http://localhost:3000** in your browser.
 
 ---
 
-## 🧠 Concepts
+## 🧠 Core Concepts
 
-### Debounce
-> Delays execution until after a user has stopped performing an action for a specified time. Great for **search inputs**, **form validation**, and **resize events**.
+### 🔵 Debounce
+Delays execution until **after** the user stops performing an action for a set time.
 
 ```js
 function debounce(fn, delay) {
@@ -62,8 +69,8 @@ function debounce(fn, delay) {
 }
 ```
 
-### Throttle
-> Ensures a function is called at most once in a specified time window. Great for **scroll events**, **mouse move**, and **window resize**.
+### 🟠 Throttle
+Ensures a function is called **at most once** within a given time window.
 
 ```js
 function throttle(fn, limit) {
@@ -84,10 +91,18 @@ function throttle(fn, limit) {
 
 ```
 debounce-throttle/
-├── index.html       # Main demo page
-├── package.json     # npm config & scripts
-└── README.md        # You're here!
+├── index.html          # Main demo page (HTML + CSS + JS)
+├── package.json        # npm config & scripts
+├── package-lock.json   # Dependency lock file
+├── .gitignore          # Ignores node_modules & OS files
+└── README.md           # You're here!
 ```
+
+---
+
+## 👤 Author
+
+**Aslam554** — [GitHub](https://github.com/Aslam554)
 
 ---
 
