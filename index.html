@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Search Demo</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 40px;
+            text-align: center;
+        }
+
+        input {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .active {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Search Box (Normal vs Debounce vs Throttle)</h2>
+
+    <input type="text" id="search" placeholder="Type something..." />
+
+    <div>
+        <button id="normalBtn" class="active">Normal</button>
+        <button id="debounceBtn">Debounce</button>
+        <button id="throttleBtn">Throttle</button>
+    </div>
+
+    <h3 id="output"></h3>
+
+    <script>
+        const input = document.getElementById("search");
+        const output = document.getElementById("output");
+
+        const normalBtn = document.getElementById("normalBtn");
+        const debounceBtn = document.getElementById("debounceBtn");
+        const throttleBtn = document.getElementById("throttleBtn");
+
+        let mode = "normal";
+
+        //  API Simulation
+        function fetchData(query) {
+            output.innerText = "API Call: " + query;
+            console.log("API Call:", query);
+        }
+
+        //  Debounce
+        function debounce(fn, delay) {
+            let timer;
+            return function (...args) {
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                    fn.apply(this, args);
+                }, delay);
+            };
+        }
+
+        //  Throttle
+        function throttle(fn, limit) {
+            let lastCall = 0;
+            return function (...args) {
+                const now = Date.now();
+                if (now - lastCall >= limit) {
+                    lastCall = now;
+                    fn.apply(this, args);
+                }
+            };
+        }
+
+        const debouncedSearch = debounce(fetchData, 500);
+        const throttledSearch = throttle(fetchData, 500);
+
+        //  Mode Switch
+        function setActive(btn) {
+            [normalBtn, debounceBtn, throttleBtn].forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+        }
+
+        normalBtn.onclick = () => {
+            mode = "normal";
+            setActive(normalBtn);
+        };
+
+        debounceBtn.onclick = () => {
+            mode = "debounce";
+            setActive(debounceBtn);
+        };
+
+        throttleBtn.onclick = () => {
+            mode = "throttle";
+            setActive(throttleBtn);
+        };
+
+        //  Input Event
+        input.addEventListener("input", (e) => {
+            const value = e.target.value;
+
+            if (mode === "normal") {
+                fetchData(value);
+            } else if (mode === "debounce") {
+                debouncedSearch(value);
+            } else {
+                throttledSearch(value);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
